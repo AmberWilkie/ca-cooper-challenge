@@ -16,6 +16,10 @@ describe("Cooper", function() {
         expect(person.gender).toEqual('female');
     });
 
+    it("should calculate through getCooper", function() {
+        expect(person.getCooper(2100)).toBe("Above average")
+    });
+
     describe('Calculate results - ladies!', function() {
 
         describe('Results for 13-year-old female', function () {
@@ -158,6 +162,10 @@ describe("Cooper", function() {
                     gender: 'male',
                     age: 13
                 });
+            });
+
+            it("should calculate through getCooper", function() {
+                expect(person.getCooper(2100)).toBe("Below average")
             });
 
             it('2800 should be Excellent', function () {

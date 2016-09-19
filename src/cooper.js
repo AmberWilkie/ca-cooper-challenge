@@ -3,11 +3,15 @@ function Person(attr) {
     this.age = attr.age;
 }
 
-Number.prototype.between = function(a, b) {
-    var min = Math.min.apply(Math, [a, b]),
-        max = Math.max.apply(Math, [a, b]);
-    return this >= min && this <= max;
+Person.prototype.getCooper = function(distance) {
+    if(this.gender == 'female') {
+        return this.getCooperForWomen(distance);
+    }
+    else {
+        return this.getCooperForMen(distance);
+    }
 };
+
 
 Person.prototype.getCooperForMen = function(distance) {
     var age = this.age;
@@ -71,6 +75,7 @@ Person.prototype.getCooperForMen = function(distance) {
             if (distance >= 2700) {
                 cooperMessage = messages(1);
             } else if (distance.between(2300, 2699)) {
+
                 cooperMessage = messages(2);
             } else if (distance.between(2000, 2299)) {
                 cooperMessage = messages(3);
@@ -245,4 +250,10 @@ messages = function(num){
     } else {
         return 'Poor';
     }
+};
+
+Number.prototype.between = function(a, b) {
+    var min = Math.min.apply(Math, [a, b]),
+        max = Math.max.apply(Math, [a, b]);
+    return this >= min && this <= max;
 };
